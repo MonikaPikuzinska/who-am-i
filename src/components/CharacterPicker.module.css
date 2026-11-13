@@ -1,0 +1,74 @@
+.dialog {
+  width: min(1080px, calc(100vw - 32px));
+  max-height: min(900px, calc(100vh - 32px));
+  margin: auto;
+  border: 0;
+  border-radius: 20px;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 24px 60px rgba(40, 24, 12, 0.22);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dialog::backdrop {
+  background: rgba(31, 26, 23, 0.45);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header h2 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.close {
+  flex: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 10px;
+  min-height: 0;
+  overflow: auto;
+  padding: 2px;
+}
+
+.empty {
+  border-radius: 12px;
+  border: 1px dashed var(--line);
+}
+
+@media (max-width: 1199px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .dialog {
+    width: calc(100vw - 16px);
+    padding: 12px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
